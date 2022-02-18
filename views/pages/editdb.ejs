@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Rectangle</title>
+    <link rel="stylesheet" href="/stylesheets/db.css">
+    <script language="javascript" type="text/javascript">
+        function removeSpaces(string) {
+         return string.split(' ').join('');
+        }
+    </script>
+</head>
+
+<body>
+    <ul id="add-ul">
+        <% rows.forEach(function(r) { %>
+        <form action="/editdb/<%= r.id %>" method="post">
+            <br><br>
+            <h2>Edit Rectangle</h2>
+            <label>Name:</label>
+            <input type="text" name="name" id="name" value="<%= r.name %>" onclick="this.value=removeSpaces(this.value);" required><br>
+
+            <br>
+
+            <label>Width (in px):</label>
+            <input type="number" name="width" id="width" oninput="validity.valid||(value='');" min="1" value="<%= r.width %>" required><br>
+            
+            <br>
+
+            <label>Height (in px):</label>
+            <input type="number" name="height" id="height" oninput="validity.valid||(value='');" min="1" value="<%= r.height %>" required><br>
+            
+            <br>
+
+            <label>Color:</label>
+            <select name="color" name="color">
+                <option value="<%= r.color %>"><%= r.color %></option>
+                <option value="Red">Red</option>
+                <option value="Orange">Orange</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Green">Green</option>
+                <option value="Blue">Blue</option>
+                <option value="Indigo">Indigo</option>
+                <option value="Violet">Violet</option>
+                <option value="Black">Black</option>
+                <option value="White">White</option>
+            </select><br>
+
+            <br>
+
+            <label>Border Size (in px 1-10):</label>
+            <input type="number" name="bordersize" id="bordersize" oninput="validity.valid||(value='');" min="1" max="10" value="<%= r.bordersize %>" required><br>
+
+            <br>
+            
+            <label>Border Color:</label>
+            <select name="bordercolor" name="bordercolor">
+                <option value="<%= r.bordercolor %>"><%= r.bordercolor %></option>
+                <option value="Red">Red</option>
+                <option value="Orange">Orange</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Green">Green</option>
+                <option value="Blue">Blue</option>
+                <option value="Indigo">Indigo</option>
+                <option value="Violet">Violet</option>
+                <option value="Black">Black</option>
+                <option value="White">White</option>
+            </select><br>
+
+            <br>
+
+            <label>Opacity:</label>
+            <input type="range" id="opacity" name="opacity" min="0" max="1" step="0.1" value="<%= r.opacity %>"><br>
+
+            <br>
+
+            <a href="" id="edit-button"><button>Edit</button></a>
+            <a href="/db"><button>Cancel</button></a>
+            <% }); %>
+        </form>
+    </ul>
+</body>
+
+</html>

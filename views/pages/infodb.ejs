@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle</title>
+    <link rel="stylesheet" href="/stylesheets/db.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <ul>
+      <h2>Information Of Rectangle</h2>
+      <table style="width:50%" id="info-table">
+        <tr>
+          <th>UUID</th>
+          <th>Name</th>
+          <th>Width</th>
+          <th>Height</th>
+          <th>Color</th>
+          <th>Border Size</th>
+          <th>Border Color</th>
+          <th>Opacity</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        <% rows.forEach(function(r) { %>
+          <tr>
+            <td>
+              <%= r.id %>
+            </td>
+            <td id="name">
+                <%= r.name %>
+            </td>
+            <td id="width">
+              <%= r.width %>
+            </td>
+            <td id="height">
+              <%= r.height %>
+            </td>
+            <td id="color">
+              <%= r.color %>
+            </td>
+            <td id="bordersize">
+              <%= r.bordersize %>
+            </td>
+            <td id="bordercolor">
+              <%= r.bordercolor %>
+            </td>
+            <td id="opacity">
+              <%= r.opacity %>
+            </td>
+            <td>
+                <a href="/editdb/<%= r.id %>">Edit</a>
+            </td>
+            <td>
+                <form id="rec-form" method="post" action="/infodb/<%= r.id %>">
+                  <a href="/db"><button>Delete</button></a>
+                </form>
+            </td>
+          </tr>
+          <% }); %>
+      </table><br>
+      <div id="rect" class="move"></div><br>
+    </ul>
+    <ul>
+      <a href="/db"><button>Go Back To Database Results</button></a>
+    </ul>
+  </div>
+  <script src="/inforect.js"></script>
+</body>
+
+</html>
